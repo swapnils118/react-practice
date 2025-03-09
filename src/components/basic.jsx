@@ -12,6 +12,7 @@ const onSubmit = async (values, actions) => {
 export default function Basic() {
   const {
     values,
+    touched,
     errors,
     handleBlur,
     isSubmitting,
@@ -40,7 +41,9 @@ export default function Basic() {
         id="email"
         type="email"
         placeholder="Enter your email"
+        className={errors.email && touched.email ? "show-error" : ""}
       />
+      {errors.email && touched.email && <p>{errors.email}</p>}
 
       <label htmlFor="age">Age</label>
       <input
@@ -50,7 +53,9 @@ export default function Basic() {
         id="age"
         type="number"
         placeholder="Enter your age"
+        className={errors.age ? "show-error" : ""}
       />
+      {errors.age && touched.age && <p>{errors.age}</p>}
 
       <label htmlFor="password">Password</label>
       <input
@@ -60,7 +65,9 @@ export default function Basic() {
         id="password"
         type="password"
         placeholder="Enter your password"
+        className={errors.password ? "show-error" : ""}
       />
+      {errors.password && touched.password && <p>{errors.password}</p>}
 
       <label htmlFor="confirmPassoword">Confirm Password</label>
       <input
@@ -70,7 +77,11 @@ export default function Basic() {
         id="confirmPassword"
         type="password"
         placeholder="Confirm your password"
+        className={errors.confirmPassword ? "show-error" : ""}
       />
+      {errors.confirmPassword && touched.confirmPassword && (
+        <p>{errors.confirmPassword}</p>
+      )}
       <button disabled={isSubmitting} type="submit">
         Submit
       </button>
